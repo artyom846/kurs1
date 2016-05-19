@@ -375,8 +375,8 @@ namespace CppWinForm1 {
 		}
 #pragma endregion
 
-private: System::Void файлToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-}
+	private: System::Void файлToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	}
 	
 		 
 		 static System::String^ stdtosys(std::string str) 
@@ -391,31 +391,28 @@ private: System::Void файлToolStripMenuItem_Click(System::Object^  sender, S
 		 }//функция для перевода перменных типа систем стринг в стд
 
 
-private: System::Void создатьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void создатьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 
-	System::Windows::Forms::DialogResult res;
-	res=MessageBox::Show("Сохранить изменения в файле " + stdtosys(filename) + "?", "Текстовый редактор""?", MessageBoxButtons::YesNoCancel);
-	switch (res)
-	{
-	case System::Windows::Forms::DialogResult::Yes:
-		if (path == "Неизвестный.txt") {
-			if (saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+		System::Windows::Forms::DialogResult res;
+		res=MessageBox::Show("Сохранить изменения в файле " + stdtosys(filename) + "?", "Текстовый редактор""?", MessageBoxButtons::YesNoCancel);
+		switch (res)
+		{
+		case System::Windows::Forms::DialogResult::Yes:
+			if (path == "Неизвестный.txt") {
+				if (saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
 				path = systostd(saveFileDialog1->FileName);
 				richTextBox1->SaveFile(stdtosys(path), RichTextBoxStreamType::PlainText);
+				}
 			}
-		}
 			else richTextBox1->SaveFile(stdtosys(path), RichTextBoxStreamType::PlainText);
-		
 		break;
-	case System::Windows::Forms::DialogResult::No:
-		richTextBox1->Clear();
+		case System::Windows::Forms::DialogResult::No:
+			richTextBox1->Clear();
 		break;
-	case System::Windows::Forms::DialogResult::Cancel:
+		case System::Windows::Forms::DialogResult::Cancel:
 		break;
-		
-
+		}
 	}
-}
 
 	private: System::Void открытьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 
@@ -423,67 +420,74 @@ private: System::Void создатьToolStripMenuItem_Click(System::Object^  sen
 		path = systostd(openFileDialog1->FileName);
 		filename = systostd(openFileDialog1->FileName);
 		richTextBox1->LoadFile(stdtosys(path), RichTextBoxStreamType::PlainText);
+		}
 	}
-}
-private: System::Void сохранитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	if (path == "Неизвестный.txt"){
-		if (saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-			path = systostd(saveFileDialog1->FileName);
-			richTextBox1->SaveFile(stdtosys(path), RichTextBoxStreamType::PlainText);
-		}} else richTextBox1->SaveFile(stdtosys(path), RichTextBoxStreamType::PlainText);
-
-}
-private: System::Void сохранитьКакToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	if (saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK) 
-		path = systostd(saveFileDialog1->FileName);
-		richTextBox1->SaveFile(stdtosys(path), RichTextBoxStreamType::PlainText);
-}
-private: System::Void выходToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	System::Windows::Forms::DialogResult res;
-	res = MessageBox::Show("Сохранить изменения в файле перед закрытием " + stdtosys(filename) + "?", "Текстовый редактор""?", MessageBoxButtons::YesNoCancel);
-	switch (res)
-	{
-	case System::Windows::Forms::DialogResult::Yes:
-		if (path == "Неизвестный.txt") {
+	private: System::Void сохранитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		if (path == "Неизвестный.txt"){
 			if (saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
 				path = systostd(saveFileDialog1->FileName);
 				richTextBox1->SaveFile(stdtosys(path), RichTextBoxStreamType::PlainText);
 			}
-		}
+		} 
 		else richTextBox1->SaveFile(stdtosys(path), RichTextBoxStreamType::PlainText);
-		Application::Exit();
-		break;
-	case System::Windows::Forms::DialogResult::No:
-		richTextBox1->Clear();
-		Application::Exit();
-		break;
-	case System::Windows::Forms::DialogResult::Cancel:
-		break;
 
-	
 	}
-}
-private: System::Void вырезатьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	richTextBox1->Cut();
-}
 
-private: System::Void копироватьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	richTextBox1->Copy();
-}
+	private: System::Void сохранитьКакToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		if (saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK) 
+			path = systostd(saveFileDialog1->FileName);
+		richTextBox1->SaveFile(stdtosys(path), RichTextBoxStreamType::PlainText);
+	}
 
-private: System::Void вставитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	richTextBox1->Paste();
-}
-private: System::Void удалитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	richTextBox1->SelectedText = "";
-}
-private: System::Void отменитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	richTextBox1->Undo();
-}
-private: System::Void информацияОПрограммеToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	System::Windows::Forms::DialogResult res1;
-	res1 = MessageBox::Show("Курсовая работа учащегося Асташёнка Артёма Владимировича, гр.553503! ", "Информация о программе""!", MessageBoxButtons::OK);
-}
+	private: System::Void выходToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		System::Windows::Forms::DialogResult res;
+		res = MessageBox::Show("Сохранить изменения в файле перед закрытием " + stdtosys(filename) + "?", "Текстовый редактор""?", MessageBoxButtons::YesNoCancel);
+		switch (res)
+		{
+		case System::Windows::Forms::DialogResult::Yes:
+			if (path == "Неизвестный.txt") {
+				if (saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				path = systostd(saveFileDialog1->FileName);
+				richTextBox1->SaveFile(stdtosys(path), RichTextBoxStreamType::PlainText);
+				}
+			}
+			else richTextBox1->SaveFile(stdtosys(path), RichTextBoxStreamType::PlainText);
+			Application::Exit();
+		break;
+		case System::Windows::Forms::DialogResult::No:
+			richTextBox1->Clear();
+			Application::Exit();
+		break;
+		case System::Windows::Forms::DialogResult::Cancel:
+		break;
+		}
+	}
+
+	private: System::Void вырезатьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		richTextBox1->Cut();
+	}
+
+	private: System::Void копироватьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		richTextBox1->Copy();
+	}
+
+	private: System::Void вставитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		richTextBox1->Paste();
+	}
+	
+	private: System::Void удалитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		richTextBox1->SelectedText = "";
+	}
+	
+	private: System::Void отменитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		richTextBox1->Undo();
+	}
+	
+	private: System::Void информацияОПрограммеToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		System::Windows::Forms::DialogResult res1;
+		res1 = MessageBox::Show("Курсовая работа учащегося Асташёнка Артёма Владимировича, гр.553503! ", "Информация о программе""!", MessageBoxButtons::OK);
+	}
+	
 	private: System::Void шрифтToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 		fontDialog1->ShowColor = true;
 
