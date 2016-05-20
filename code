@@ -375,8 +375,8 @@ namespace CppWinForm1 {
 		}
 #pragma endregion
 
-	private: System::Void файлToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	}
+		private: System::Void файлToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		}
 	
 		 
 		 static System::String^ stdtosys(std::string str) 
@@ -391,7 +391,7 @@ namespace CppWinForm1 {
 		 }//функция для перевода перменных типа систем стринг в стд
 
 
-	private: System::Void создатьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		private: System::Void создатьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 
 		System::Windows::Forms::DialogResult res;
 		res=MessageBox::Show("Сохранить изменения в файле " + stdtosys(filename) + "?", "Текстовый редактор""?", MessageBoxButtons::YesNoCancel);
