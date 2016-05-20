@@ -391,7 +391,7 @@ namespace CppWinForm1 {
 		 }//функция для перевода перменных типа систем стринг в стд
 
 
-		private: System::Void создатьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Создание нового файла
+		private: System::Void создатьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { 
 		System::Windows::Forms::DialogResult res;
 		res=MessageBox::Show("Сохранить изменения в файле " + stdtosys(filename) + "?", "Текстовый редактор""?", MessageBoxButtons::YesNoCancel);
 		switch (res)
@@ -411,7 +411,7 @@ namespace CppWinForm1 {
 		case System::Windows::Forms::DialogResult::Cancel:
 		break;
 		}
-	}
+	} // Создание нового файла
 
 	private: System::Void открытьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { \\ Открытие файла формата .txt
 
@@ -489,7 +489,7 @@ namespace CppWinForm1 {
 		res1 = MessageBox::Show("Курсовая работа учащегося Асташёнка Артёма Владимировича, гр.553503! ", "Информация о программе""!", MessageBoxButtons::OK);
 	}
 	
-	private: System::Void шрифтToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Извенение шрифта
+	private: System::Void шрифтToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { 
 		fontDialog1->ShowColor = true;
 
 		fontDialog1->Color = richTextBox1->ForeColor;
@@ -500,6 +500,6 @@ namespace CppWinForm1 {
 			richTextBox1->Font = fontDialog1->Font;
 			richTextBox1->ForeColor = fontDialog1->Color;
 		}
-	}
+	} // Изменение шрифта
 };
 }
