@@ -375,8 +375,8 @@ namespace CppWinForm1 {
 		}
 #pragma endregion
 
-			private: System::Void файлToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-			}
+		private: System::Void файлToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		}
 	
 		 
 		 static System::String^ stdtosys(std::string str) 
