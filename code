@@ -392,7 +392,6 @@ namespace CppWinForm1 {
 
 
 		private: System::Void создатьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-
 		System::Windows::Forms::DialogResult res;
 		res=MessageBox::Show("Сохранить изменения в файле " + stdtosys(filename) + "?", "Текстовый редактор""?", MessageBoxButtons::YesNoCancel);
 		switch (res)
