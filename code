@@ -391,7 +391,7 @@ namespace CppWinForm1 {
 		 }//функция для перевода перменных типа систем стринг в стд
 
 
-		private: System::Void создатьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		private: System::Void создатьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Создание нового файла
 		System::Windows::Forms::DialogResult res;
 		res=MessageBox::Show("Сохранить изменения в файле " + stdtosys(filename) + "?", "Текстовый редактор""?", MessageBoxButtons::YesNoCancel);
 		switch (res)
@@ -413,7 +413,7 @@ namespace CppWinForm1 {
 		}
 	}
 
-	private: System::Void открытьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void открытьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { \\ Открытие файла формата .txt
 
 		(openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK); {
 		path = systostd(openFileDialog1->FileName);
@@ -432,13 +432,13 @@ namespace CppWinForm1 {
 
 	}
 
-	private: System::Void сохранитьКакToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void сохранитьКакToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { //  Сохранение файла в формате .txt
 		if (saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK) 
 			path = systostd(saveFileDialog1->FileName);
 		richTextBox1->SaveFile(stdtosys(path), RichTextBoxStreamType::PlainText);
 	}
 
-	private: System::Void выходToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void выходToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Выход из программы
 	
 	System::Windows::Forms::DialogResult res;
 	res = MessageBox::Show("Сохранить изменения в файле перед закрытием " + stdtosys(filename) + "?", "Текстовый редактор""?", MessageBoxButtons::YesNoCancel);
@@ -464,32 +464,32 @@ namespace CppWinForm1 {
 		}
 	}
 
-	private: System::Void вырезатьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void вырезатьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Функция вырезать ведленный текст
 		richTextBox1->Cut();
 	}
 
-	private: System::Void копироватьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void копироватьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Функция копировать ведленный текст
 		richTextBox1->Copy();
 	}
 
-	private: System::Void вставитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void вставитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Функция вставить ведленный текст
 		richTextBox1->Paste();
 	}
 	
-	private: System::Void удалитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void удалитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Функция удалить ведленный текст
 		richTextBox1->SelectedText = "";
 	}
 	
-	private: System::Void отменитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void отменитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Функция отменить предыдущее действие
 		richTextBox1->Undo();
 	}
 	
-	private: System::Void информацияОПрограммеToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void информацияОПрограммеToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Информация о пргамме и создателе 
 		System::Windows::Forms::DialogResult res1;
 		res1 = MessageBox::Show("Курсовая работа учащегося Асташёнка Артёма Владимировича, гр.553503! ", "Информация о программе""!", MessageBoxButtons::OK);
 	}
 	
-	private: System::Void шрифтToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void шрифтToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Извенение шрифта
 		fontDialog1->ShowColor = true;
 
 		fontDialog1->Color = richTextBox1->ForeColor;
