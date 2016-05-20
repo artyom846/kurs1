@@ -439,9 +439,9 @@ namespace CppWinForm1 {
 	}
 
 	private: System::Void выходToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-
 	System::Windows::Forms::DialogResult res;
 	res = MessageBox::Show("Сохранить изменения в файле перед закрытием " + stdtosys(filename) + "?", "Текстовый редактор""?", MessageBoxButtons::YesNoCancel);
+
 	switch (res)
 	{
 		case System::Windows::Forms::DialogResult::Yes:
