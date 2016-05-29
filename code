@@ -13,7 +13,7 @@ namespace CppWinForm1 {
 	/// <summary>
 	/// Summary for MyForm
 	/// </summary>
-	
+
 	std::string filename = "Неизвестный";
 	std::string path = "Неизвестный.txt";
 
@@ -92,6 +92,9 @@ namespace CppWinForm1 {
 	private: System::Windows::Forms::ToolStripMenuItem^  левомуКраюToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  правомуКраюToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  центруToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  цветФонаToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  включитьToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  выключитьToolStripMenuItem;
 
 
 
@@ -142,6 +145,9 @@ namespace CppWinForm1 {
 			this->удалитьToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->форматToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->шрифтToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->цветФонаToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->включитьToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->выключитьToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->справкаToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->информацияОПрограммеToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->выравнитьТекстПоToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -308,7 +314,10 @@ namespace CppWinForm1 {
 			// 
 			// форматToolStripMenuItem
 			// 
-			this->форматToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->шрифтToolStripMenuItem });
+			this->форматToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->шрифтToolStripMenuItem,
+					this->цветФонаToolStripMenuItem
+			});
 			this->форматToolStripMenuItem->Name = L"форматToolStripMenuItem";
 			this->форматToolStripMenuItem->Size = System::Drawing::Size(62, 20);
 			this->форматToolStripMenuItem->Text = L"Формат";
@@ -316,9 +325,34 @@ namespace CppWinForm1 {
 			// шрифтToolStripMenuItem
 			// 
 			this->шрифтToolStripMenuItem->Name = L"шрифтToolStripMenuItem";
-			this->шрифтToolStripMenuItem->Size = System::Drawing::Size(113, 22);
+			this->шрифтToolStripMenuItem->Size = System::Drawing::Size(159, 22);
 			this->шрифтToolStripMenuItem->Text = L"Шрифт";
 			this->шрифтToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::шрифтToolStripMenuItem_Click);
+			// 
+			// цветФонаToolStripMenuItem
+			// 
+			this->цветФонаToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->включитьToolStripMenuItem,
+					this->выключитьToolStripMenuItem
+			});
+			this->цветФонаToolStripMenuItem->Name = L"цветФонаToolStripMenuItem";
+			this->цветФонаToolStripMenuItem->Size = System::Drawing::Size(159, 22);
+			this->цветФонаToolStripMenuItem->Text = L"Ночной режим";
+			this->цветФонаToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::цветФонаToolStripMenuItem_Click);
+			// 
+			// включитьToolStripMenuItem
+			// 
+			this->включитьToolStripMenuItem->Name = L"включитьToolStripMenuItem";
+			this->включитьToolStripMenuItem->Size = System::Drawing::Size(138, 22);
+			this->включитьToolStripMenuItem->Text = L"Включить";
+			this->включитьToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::включитьToolStripMenuItem_Click);
+			// 
+			// выключитьToolStripMenuItem
+			// 
+			this->выключитьToolStripMenuItem->Name = L"выключитьToolStripMenuItem";
+			this->выключитьToolStripMenuItem->Size = System::Drawing::Size(138, 22);
+			this->выключитьToolStripMenuItem->Text = L"Выключить";
+			this->выключитьToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::выключитьToolStripMenuItem_Click);
 			// 
 			// справкаToolStripMenuItem
 			// 
@@ -355,7 +389,6 @@ namespace CppWinForm1 {
 			// 
 			// правомуКраюToolStripMenuItem
 			// 
-
 			this->правомуКраюToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"правомуКраюToolStripMenuItem.Image")));
 			this->правомуКраюToolStripMenuItem->Name = L"правомуКраюToolStripMenuItem";
 			this->правомуКраюToolStripMenuItem->Size = System::Drawing::Size(154, 22);
@@ -375,7 +408,9 @@ namespace CppWinForm1 {
 			this->richTextBox1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
+			this->richTextBox1->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->richTextBox1->ContextMenuStrip = this->contextMenuStrip1;
+			this->richTextBox1->ForeColor = System::Drawing::SystemColors::InfoText;
 			this->richTextBox1->Location = System::Drawing::Point(0, 27);
 			this->richTextBox1->Name = L"richTextBox1";
 			this->richTextBox1->Size = System::Drawing::Size(544, 355);
@@ -460,68 +495,68 @@ namespace CppWinForm1 {
 
 	private: System::Void файлToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
-	
-		 
-		 static System::String^ stdtosys(std::string str) 
-		 {
-			return gcnew System::String(str.c_str());
-		 } //функция для перевода перменных типа стд(глобальный) в стринговый
 
-		 static const std::string systostd(System::String^ SyaStr)
-		 {
-			 using namespace Runtime::InteropServices;
-			 return(const char*)(Marshal::StringToHGlobalAnsi(SyaStr).ToPointer());
-		 }//функция для перевода перменных типа систем стринг в стд
+
+			 static System::String^ stdtosys(std::string str)
+			 {
+				 return gcnew System::String(str.c_str());
+			 } //функция для перевода перменных типа стд(глобальный) в стринговый
+
+			 static const std::string systostd(System::String^ SyaStr)
+			 {
+				 using namespace Runtime::InteropServices;
+				 return(const char*)(Marshal::StringToHGlobalAnsi(SyaStr).ToPointer());
+			 }//функция для перевода перменных типа систем стринг в стд
 
 
 	private: System::Void создатьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Создание нового файла формата .txt
 
-	System::Windows::Forms::DialogResult res;
-	res=MessageBox::Show("Сохранить изменения в файле " + stdtosys(filename) + "?", "Текстовый редактор""?", MessageBoxButtons::YesNoCancel);
-	switch (res)
-	{
+		System::Windows::Forms::DialogResult res;
+		res = MessageBox::Show("Сохранить изменения в файле " + stdtosys(filename) + "?", "Текстовый редактор""?", MessageBoxButtons::YesNoCancel);
+		switch (res)
+		{
 		case System::Windows::Forms::DialogResult::Yes:
 			if (path == "Неизвестный.txt") {
-				if (saveFileDialog1 -> ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				if (saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
 					path = systostd(saveFileDialog1->FileName);
-					richTextBox1 -> SaveFile(stdtosys(path), RichTextBoxStreamType::PlainText);
+					richTextBox1->SaveFile(stdtosys(path), RichTextBoxStreamType::PlainText);
 				}
 			}
-			else richTextBox1 -> SaveFile(stdtosys(path), RichTextBoxStreamType::PlainText);
+			else richTextBox1->SaveFile(stdtosys(path), RichTextBoxStreamType::PlainText);
 			break;
 		case System::Windows::Forms::DialogResult::No:
 			richTextBox1->Clear();
 			break;
 		case System::Windows::Forms::DialogResult::Cancel:
 			break;
-		
 
+
+		}
 	}
-}
 
 	private: System::Void открытьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Открытие файла формата .txt
 
 		(openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK); {
-		path = systostd(openFileDialog1 -> FileName);
-		filename = systostd(openFileDialog1->FileName);
-		richTextBox1 -> LoadFile(stdtosys(path), RichTextBoxStreamType::PlainText);
+			path = systostd(openFileDialog1->FileName);
+			filename = systostd(openFileDialog1->FileName);
+			richTextBox1->LoadFile(stdtosys(path), RichTextBoxStreamType::PlainText);
+		}
 	}
-}
 
 	private: System::Void сохранитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Сохранение файла формата .txt
-		if (path == "Неизвестный.txt"){
-			if (saveFileDialog1 -> ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-				path = systostd(saveFileDialog1 -> FileName);
+		if (path == "Неизвестный.txt") {
+			if (saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				path = systostd(saveFileDialog1->FileName);
 				richTextBox1->SaveFile(stdtosys(path), RichTextBoxStreamType::PlainText);
 			}
-		} 
-		else richTextBox1 -> SaveFile(stdtosys(path), RichTextBoxStreamType::PlainText);
-	}	
+		}
+		else richTextBox1->SaveFile(stdtosys(path), RichTextBoxStreamType::PlainText);
+	}
 
 	private: System::Void сохранитьКакToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Сохранение файла с указанием пути формата .txt
-		if (saveFileDialog1 -> ShowDialog() == System::Windows::Forms::DialogResult::OK) 
-			path = systostd(saveFileDialog1 -> FileName);
-			richTextBox1 -> SaveFile(stdtosys(path), RichTextBoxStreamType::PlainText);
+		if (saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+			path = systostd(saveFileDialog1->FileName);
+		richTextBox1->SaveFile(stdtosys(path), RichTextBoxStreamType::PlainText);
 	}
 
 	private: System::Void выходToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Выход из программы
@@ -529,44 +564,44 @@ namespace CppWinForm1 {
 		res = MessageBox::Show("Сохранить изменения в файле перед закрытием " + stdtosys(filename) + "?", "Текстовый редактор""?", MessageBoxButtons::YesNoCancel);
 		switch (res)
 		{
-			case System::Windows::Forms::DialogResult::Yes:
+		case System::Windows::Forms::DialogResult::Yes:
 			if (path == "Неизвестный.txt") {
 				if (saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-					path = systostd(saveFileDialog1 -> FileName);
-					richTextBox1 -> SaveFile(stdtosys(path), RichTextBoxStreamType::PlainText);
+					path = systostd(saveFileDialog1->FileName);
+					richTextBox1->SaveFile(stdtosys(path), RichTextBoxStreamType::PlainText);
 				}
 			}
-			else richTextBox1 -> SaveFile(stdtosys(path), RichTextBoxStreamType::PlainText);
-				Application::Exit();
+			else richTextBox1->SaveFile(stdtosys(path), RichTextBoxStreamType::PlainText);
+			Application::Exit();
 			break;
 
-			case System::Windows::Forms::DialogResult::No:
-				richTextBox1 -> Clear();
-				Application::Exit();
+		case System::Windows::Forms::DialogResult::No:
+			richTextBox1->Clear();
+			Application::Exit();
 			break;
-	
-			case System::Windows::Forms::DialogResult::Cancel:
+
+		case System::Windows::Forms::DialogResult::Cancel:
 			break;
 		}
 	}
 	private: System::Void вырезатьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Функция вырезать
-		richTextBox1 -> Cut();
+		richTextBox1->Cut();
 	}
 
 	private: System::Void копироватьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Функция копировать
-		richTextBox1 -> Copy();
+		richTextBox1->Copy();
 	}
 
 	private: System::Void вставитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Функция выставить
-		richTextBox1 -> Paste();
+		richTextBox1->Paste();
 	}
 
 	private: System::Void удалитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Функция удалить
-		richTextBox1 -> SelectedText = "";
+		richTextBox1->SelectedText = "";
 	}
 
 	private: System::Void отменитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Функция отменить последнее действие
-		richTextBox1 -> Undo();
+		richTextBox1->Undo();
 	}
 
 	private: System::Void информацияОПрограммеToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Вывод сведений о программе 
@@ -575,20 +610,20 @@ namespace CppWinForm1 {
 	}
 
 	private: System::Void шрифтToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Функия изменения шрифта
-		fontDialog1 -> ShowColor = true;
+		fontDialog1->ShowColor = true;
 
-		fontDialog1 -> Color = richTextBox1->ForeColor;
-		fontDialog1 -> Font = richTextBox1->Font;
+		fontDialog1->Color = richTextBox1->ForeColor;
+		fontDialog1->Font = richTextBox1->Font;
 
-		if (fontDialog1 -> ShowDialog() != System::Windows::Forms::DialogResult::Cancel)
+		if (fontDialog1->ShowDialog() != System::Windows::Forms::DialogResult::Cancel)
 		{
-			richTextBox1 -> Font = fontDialog1->Font;
-			richTextBox1 -> ForeColor = fontDialog1->Color;
+			richTextBox1->Font = fontDialog1->Font;
+			richTextBox1->ForeColor = fontDialog1->Color;
 		}
 	}
 	private: System::Void печатьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Функия вывода диалога печати
-		if(printDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-		printDocument1 -> Print();
+		if (printDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+			printDocument1->Print();
 	}
 
 	private: System::Void printDocument1_PrintPage(System::Object^  sender, System::Drawing::Printing::PrintPageEventArgs^  e) { // Функия вывод на печать
@@ -604,9 +639,19 @@ namespace CppWinForm1 {
 	private: System::Void правомуКраюToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Функция выравнивания текста по правосу краю
 		richTextBox1->SelectionAlignment = HorizontalAlignment::Right;
 	}
-	
-	private: System::Void центруToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e)  { // Функция выравнивания текста по центру
+
+	private: System::Void центруToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Функция выравнивания текста по центру
 		richTextBox1->SelectionAlignment = HorizontalAlignment::Center;
 	}
+	private: System::Void цветФонаToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	}
+private: System::Void включитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	richTextBox1->BackColor = System::Drawing::Color::Black;
+	richTextBox1->ForeColor = System::Drawing::Color::White;
+}
+private: System::Void выключитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	richTextBox1->BackColor = System::Drawing::Color::White;
+	richTextBox1->ForeColor = System::Drawing::Color::Black;
+}
 };
 }
