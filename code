@@ -40,7 +40,7 @@ namespace CppWinForm1 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::StatusStrip^  statusStrip1;
+
 	private: System::Windows::Forms::MenuStrip^  menuStrip1;
 
 
@@ -95,6 +95,25 @@ namespace CppWinForm1 {
 	private: System::Windows::Forms::ToolStripMenuItem^  цветФонаToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  включитьToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  выключитьToolStripMenuItem;
+	private: System::Windows::Forms::StatusStrip^  statusStrip1;
+	private: System::Windows::Forms::Timer^  timer1;
+	private: System::Windows::Forms::ToolStripMenuItem^  автосохранениеToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  сохранятьКаждуюМинутуToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  сохранятьКаждые10МинутToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  выключитьАвтосохранениеToolStripMenuItem;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -125,7 +144,6 @@ namespace CppWinForm1 {
 		{
 			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
-			this->statusStrip1 = (gcnew System::Windows::Forms::StatusStrip());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->файлToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->создатьToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -165,17 +183,15 @@ namespace CppWinForm1 {
 			this->fontDialog1 = (gcnew System::Windows::Forms::FontDialog());
 			this->printDocument1 = (gcnew System::Drawing::Printing::PrintDocument());
 			this->printDialog1 = (gcnew System::Windows::Forms::PrintDialog());
+			this->statusStrip1 = (gcnew System::Windows::Forms::StatusStrip());
+			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->сохранятьКаждуюМинутуToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->сохранятьКаждые10МинутToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->автосохранениеToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->выключитьАвтосохранениеToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			this->contextMenuStrip1->SuspendLayout();
 			this->SuspendLayout();
-			// 
-			// statusStrip1
-			// 
-			this->statusStrip1->Location = System::Drawing::Point(0, 385);
-			this->statusStrip1->Name = L"statusStrip1";
-			this->statusStrip1->Size = System::Drawing::Size(544, 22);
-			this->statusStrip1->TabIndex = 0;
-			this->statusStrip1->Text = L"statusStrip1";
 			// 
 			// menuStrip1
 			// 
@@ -191,10 +207,10 @@ namespace CppWinForm1 {
 			// 
 			// файлToolStripMenuItem
 			// 
-			this->файлToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(8) {
+			this->файлToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(9) {
 				this->создатьToolStripMenuItem,
-					this->открытьToolStripMenuItem, this->сохранитьToolStripMenuItem, this->сохранитьКакToolStripMenuItem, this->toolStripMenuItem3,
-					this->печатьToolStripMenuItem, this->toolStripMenuItem1, this->выходToolStripMenuItem
+					this->открытьToolStripMenuItem, this->сохранитьToolStripMenuItem, this->сохранитьКакToolStripMenuItem, this->автосохранениеToolStripMenuItem,
+					this->toolStripMenuItem3, this->печатьToolStripMenuItem, this->toolStripMenuItem1, this->выходToolStripMenuItem
 			});
 			this->файлToolStripMenuItem->Name = L"файлToolStripMenuItem";
 			this->файлToolStripMenuItem->Size = System::Drawing::Size(48, 20);
@@ -471,6 +487,50 @@ namespace CppWinForm1 {
 			// 
 			this->printDialog1->UseEXDialog = true;
 			// 
+			// statusStrip1
+			// 
+			this->statusStrip1->Location = System::Drawing::Point(0, 385);
+			this->statusStrip1->Name = L"statusStrip1";
+			this->statusStrip1->Size = System::Drawing::Size(544, 22);
+			this->statusStrip1->TabIndex = 0;
+			this->statusStrip1->Text = L"statusStrip1";
+			// 
+			// timer1
+			// 
+			this->timer1->Interval = 1000;
+			this->timer1->Tick += gcnew System::EventHandler(this, &MyForm::сохранитьToolStripMenuItem_Click);
+			// 
+			// сохранятьКаждуюМинутуToolStripMenuItem
+			// 
+			this->сохранятьКаждуюМинутуToolStripMenuItem->Name = L"сохранятьКаждуюМинутуToolStripMenuItem";
+			this->сохранятьКаждуюМинутуToolStripMenuItem->Size = System::Drawing::Size(229, 22);
+			this->сохранятьКаждуюМинутуToolStripMenuItem->Text = L"Сохранять каждую минуту";
+			this->сохранятьКаждуюМинутуToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::сохранятьКаждуюМинутуToolStripMenuItem_Click);
+			// 
+			// сохранятьКаждые10МинутToolStripMenuItem
+			// 
+			this->сохранятьКаждые10МинутToolStripMenuItem->Name = L"сохранятьКаждые10МинутToolStripMenuItem";
+			this->сохранятьКаждые10МинутToolStripMenuItem->Size = System::Drawing::Size(229, 22);
+			this->сохранятьКаждые10МинутToolStripMenuItem->Text = L"Сохранять каждые 10 минут";
+			this->сохранятьКаждые10МинутToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::сохранятьКаждые10МинутToolStripMenuItem_Click);
+			// 
+			// автосохранениеToolStripMenuItem
+			// 
+			this->автосохранениеToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+				this->сохранятьКаждуюМинутуToolStripMenuItem,
+					this->сохранятьКаждые10МинутToolStripMenuItem, this->выключитьАвтосохранениеToolStripMenuItem
+			});
+			this->автосохранениеToolStripMenuItem->Name = L"автосохранениеToolStripMenuItem";
+			this->автосохранениеToolStripMenuItem->Size = System::Drawing::Size(172, 22);
+			this->автосохранениеToolStripMenuItem->Text = L"Автосохранение";
+			// 
+			// выключитьАвтосохранениеToolStripMenuItem
+			// 
+			this->выключитьАвтосохранениеToolStripMenuItem->Name = L"выключитьАвтосохранениеToolStripMenuItem";
+			this->выключитьАвтосохранениеToolStripMenuItem->Size = System::Drawing::Size(229, 22);
+			this->выключитьАвтосохранениеToolStripMenuItem->Text = L"Выключить автосохранение";
+			this->выключитьАвтосохранениеToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::выключитьАвтосохранениеToolStripMenuItem_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -645,13 +705,24 @@ namespace CppWinForm1 {
 	}
 	private: System::Void цветФонаToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
-private: System::Void включитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+private: System::Void включитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Включение ночного режима
 	richTextBox1->BackColor = System::Drawing::Color::Black;
 	richTextBox1->ForeColor = System::Drawing::Color::White;
 }
-private: System::Void выключитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+private: System::Void выключитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { //Выключение ночного режима
 	richTextBox1->BackColor = System::Drawing::Color::White;
 	richTextBox1->ForeColor = System::Drawing::Color::Black;
+}
+private: System::Void сохранятьКаждуюМинутуToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Автосохранение каждую минуту
+	timer1->Interval = 60000;
+	timer1->Enabled = true;
+}
+private: System::Void сохранятьКаждые10МинутToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Автосохранение каждые 10 минут
+	timer1->Interval = 600000;
+	timer1->Enabled = true;
+}
+private: System::Void выключитьАвтосохранениеToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {// Выключение автосохранения
+	timer1->Enabled = false;
 }
 };
 }
