@@ -703,26 +703,32 @@ namespace CppWinForm1 {
 	private: System::Void центруToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Функция выравнивания текста по центру
 		richTextBox1->SelectionAlignment = HorizontalAlignment::Center;
 	}
+	
 	private: System::Void цветФонаToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
-private: System::Void включитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Включение ночного режима
-	richTextBox1->BackColor = System::Drawing::Color::Black;
-	richTextBox1->ForeColor = System::Drawing::Color::White;
-}
-private: System::Void выключитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { //Выключение ночного режима
-	richTextBox1->BackColor = System::Drawing::Color::White;
-	richTextBox1->ForeColor = System::Drawing::Color::Black;
-}
-private: System::Void сохранятьКаждуюМинутуToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Автосохранение каждую минуту
-	timer1->Interval = 60000;
-	timer1->Enabled = true;
-}
-private: System::Void сохранятьКаждые10МинутToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Автосохранение каждые 10 минут
-	timer1->Interval = 600000;
-	timer1->Enabled = true;
-}
-private: System::Void выключитьАвтосохранениеToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {// Выключение автосохранения
-	timer1->Enabled = false;
-}
+	
+	private: System::Void включитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Включение ночного режима
+		richTextBox1->BackColor = System::Drawing::Color::Black;
+		richTextBox1->ForeColor = System::Drawing::Color::White;
+	}
+
+	private: System::Void выключитьToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { //Выключение ночного режима
+		richTextBox1->BackColor = System::Drawing::Color::White;
+		richTextBox1->ForeColor = System::Drawing::Color::Black;
+	}
+
+	private: System::Void сохранятьКаждуюМинутуToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Автосохранение каждую минуту
+		timer1->Interval = 60000;
+		timer1->Enabled = true;
+	}
+	
+	private: System::Void сохранятьКаждые10МинутToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) { // Автосохранение каждые 10 минут
+		timer1->Interval = 600000;
+		timer1->Enabled = true;
+	}
+
+	private: System::Void выключитьАвтосохранениеToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {// Выключение автосохранения
+		timer1->Enabled = false;
+	}
 };
 }
